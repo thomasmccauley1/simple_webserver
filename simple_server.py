@@ -13,6 +13,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.wfile.write(b"Data received")
 
 with socketserver.TCPServer(("", PORT), Handler) as httpd:
-    print(f"Serving on port {PORT}")
+    # "" binds to all interfaces (0.0.0.0)
+    ip, port = httpd.server_address
+    print(f"Server running on {ip}:{port}")  # <-- print bound IP and port
     httpd.serve_forever()
 
