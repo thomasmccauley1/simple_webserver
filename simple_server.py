@@ -12,7 +12,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(b"Data received")
 
-with socketserver.TCPServer(("0.0.0.0", PORT), Handler) as httpd:
+with socketserver.TCPServer(("", PORT), Handler) as httpd:
     print(f"Serving on port {PORT}")
     httpd.serve_forever()
 
